@@ -1,7 +1,7 @@
 RasPi-mqtt-c
 ============
 
-This C sample show how to use MQTT to communicate with AirVantage.
+This C sample shows how to use MQTT to communicate with AirVantage.
 
 This source code is based on http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.embedded-c.git/ sample.
 
@@ -29,3 +29,30 @@ Run
 ---
 
 This sample can be run with ethernet bearer or AirPi Wireless connection.
+
+AirPi shield
+------------
+
+AirPi shield allows radio connection to internet.
+
+# Harware installation
+
+1. Plug your shiled on Raspberry Pi and plug the USB cable from the device and your shield.
+2. Use shield power to have power for raspberry pi and the shield.
+3. Plug the antenna.
+4. Insert your simcard.
+
+# Process:
+1. Install ppp, wvdial and usb-switchmod packages
+2. reboot
+3. In a terminal: lsusb to check the Sierra Wireless modem appears
+4. Copy the wvdial.conf config file on /etc
+5. Edit the wvdial.conf to define your APN, username and password if needed.
+6. Run wvdial with this configuration:
+~~~
+ wvdial wvdial.conf network
+~~~
+5. Check the IP using ifconfig (a ppp connection must be on) 
+6. Start your application
+
+
