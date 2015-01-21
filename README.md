@@ -12,7 +12,7 @@ This version simulates and sends humidity values and send temperature value (sta
 
 Configuration
 -------------
-Setup your favorite distribution on your Raspberry Pi
+Setup your favorite distribution on your Raspberry Pi (see http://www.raspberrypi.org/help/quick-start-guide/)
 Edit src/stdoutsub.c:
  - deviceId global variable, line 40
  - server name in the main function, line 219
