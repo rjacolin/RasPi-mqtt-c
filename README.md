@@ -52,7 +52,7 @@ AirPi shield allows radio connection to internet.
 ~~~
  wvdial wvdial.conf network
 ~~~
-5. Check the IP using ifconfig (a ppp connection must be on) 
-6. Start your application
+7. Check the IP using ifconfig (a ppp connection must be on) 
+8. Start your application
 
 
