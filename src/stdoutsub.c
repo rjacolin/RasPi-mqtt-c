@@ -220,7 +220,7 @@ int main(int argc, char** argv)
 	data.username.cstring = "00000000B6AF4A9D";
 	data.password.cstring = "toto";
 
-	data.keepAliveInterval = 10;
+	data.keepAliveInterval = 10000;
 	data.cleansession = 1;
 	printf("Connecting to %s %d\n", "tcp://eu.airvantage.net", 1883);
 	
