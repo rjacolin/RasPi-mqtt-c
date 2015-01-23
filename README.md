@@ -15,8 +15,8 @@ Configuration
 Setup your favorite distribution on your Raspberry Pi (see http://www.raspberrypi.org/help/quick-start-guide/)
 Edit src/stdoutsub.c:
  - deviceId global variable, line 40
- - server name in the main function, line 219
- - username (same than deviceId) and password, in the main function, line 220
+ - server name in the main function, line 225
+ - username (same than deviceId) and password, in the main function, line 220 - 221
 
 Build
 -----
