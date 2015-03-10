@@ -26,5 +26,4 @@
     </data>  
 
   </capabilities>
-  	<application-manager use="SOFT_IDS" />
 </app:application>
