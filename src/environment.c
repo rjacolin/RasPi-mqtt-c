@@ -27,7 +27,12 @@ double getLuminosity() {
 
 int getTemperature()
 {
-	return temperature;
+    static double temp = 25;
+    temp += random(-100, +100) / 20;
+    BOUNDARIES( 0, temp, 100);
+    return temp;
+
+//	return temperature;
 }
 
 int getTimeStamp()  /* This one isn't a mock-up! */

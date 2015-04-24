@@ -35,15 +35,21 @@ AirPi shield
 
 AirPi shield allows radio connection to internet.
 
+# Code configuration
+1. In a terminal:
+cat /proc/cpuinfo | grep Serial
+2. Edit src/stdout.c file and update the deviceId/serialnumber (two lines) with your raspberry Pi serial number
+3. make
+
 # Harware installation
 
-1. Plug your shiled on Raspberry Pi and plug the USB cable from the device and your shield.
+1. Plug your shield on Raspberry Pi and plug the USB cable from the device and your shield.
 2. Use shield power to have power for raspberry pi and the shield.
 3. Plug the antenna.
 4. Insert your simcard.
 
 # Process:
-1. Install ppp, wvdial and usb-switchmod packages
+1. Install ppp, wvdial and usb-modeswitch packages
 2. reboot
 3. In a terminal: lsusb to check the Sierra Wireless modem appears
 4. Copy the wvdial.conf config file on /etc
