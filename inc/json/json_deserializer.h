@@ -69,7 +69,7 @@ typedef struct bsd_data_t {
  * @param values     : arrays of data value. The deserialized data is stored in the bsd_data_t structure
  */
 typedef struct mqtt_callBackData_t {  ///<  for DATA
-	int ticketId;
+	char* ticketId;
 	char *path;
 	int nbofvalues;
 	char **keys;

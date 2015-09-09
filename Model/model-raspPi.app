@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <app:application xmlns:app="http://www.sierrawireless.com/airvantage/application/1.0" 
-        type="com.test.myapplication" 
-        name="GreenPi" 
+        type="com.test.alfredo.myapplication" 
+        name="GreenPi4Alf" 
         revision="0.0.1">
   <capabilities>
   

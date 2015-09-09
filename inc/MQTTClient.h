@@ -51,9 +51,9 @@ struct MessageData
     MQTTString* topicName;
 };
 
-typedef void (*messageHandler)(MessageData*);
-
 typedef struct Client Client;
+
+typedef void (*messageHandler)(Client*, MessageData*);
 
 int MQTTConnect (Client*, MQTTPacket_connectData*);
 int MQTTPublish (Client*, const char*, MQTTMessage*);
@@ -61,8 +61,6 @@ int MQTTSubscribe (Client*, const char*, enum QoS, messageHandler);
 int MQTTUnsubscribe (Client*, const char*);
 int MQTTDisconnect (Client*);
 int MQTTYield (Client*, int);
-
-void setDefaultMessageHandler(Client*, messageHandler);
 
 void MQTTClient(Client*, Network*, unsigned int, unsigned char*, size_t, unsigned char*, size_t);
 
@@ -79,7 +77,7 @@ struct Client {
     struct MessageHandlers
     {
         const char* topicFilter;
-        void (*fp) (MessageData*);
+        void (*fp) (Client*, MessageData*);
     } messageHandlers[MAX_MESSAGE_HANDLERS];      // Message handlers are indexed by subscription topic
     
     void (*defaultMessageHandler) (MessageData*);

@@ -154,6 +154,33 @@ void* uploadMeasuresHandler(void *arg)
 	return NULL;
 }
 
+void onDataAcknowledgment(Client* c, char* ticketId)
+{
+	char buffer[1024];
+	// [{"uid": "8006cc58ba2141f69161a78f1bfdea1d", "status" : "OK"}]
+
+	// Push values using full data path.
+	sprintf(buffer, "[{\"uid\": \"%s\", \"status\": \"OK\"}]", ticketId);
+
+	printf("[ACK] %s\n", buffer);
+
+	MQTTMessage msg;
+	msg.qos = QOS0;
+	msg.retained = 0;
+	msg.dup = 0;
+	msg.id = 0;
+	msg.payload = buffer;
+	msg.payloadlen = strlen(buffer);
+
+	char* topic = malloc(15+strlen(deviceId));
+	sprintf(topic, "%s/acks/json", deviceId);
+	printf("Publish on %s\n", topic);
+
+	int rc = MQTTPublish(c, topic, &msg);
+	if(rc != 0)
+		printf("publish error: %d\n", rc);
+}
+
 /****************************************************************/
 /*  Object     : Parse the message value coming from the server */
 /****************************************************************/
@@ -174,7 +201,7 @@ void onIncomingData(char *path, char** keys, bsd_data_t **values, size_t nbofval
 	}
 }
 
-void messageArrived(MessageData* md)
+void messageArrived(Client* c, MessageData* md)
 {
 	MQTTMessage* message = md->message;
 
@@ -190,7 +217,7 @@ void messageArrived(MessageData* md)
 		onIncomingData( data.path, data.keys, data.values, data.nbofvalues);
 
 		/*acknowledge to the server after receiving data*/
-		//onDataAcknowledgment(data.ticketId);
+		onDataAcknowledgment(c, data.ticketId);
 //	}
 	json_free(data);
 	printf("[callBackFct] End callback user  \r\n\n\n\n");
